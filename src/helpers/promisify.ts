@@ -17,6 +17,9 @@ function promisify<
   D extends Parameters<F> extends [err: unknown, data: infer D] ? D : never,
 >(fn: T): (...args: P) => Promise<D> {
   return function (...args: P): Promise<D> {
+    if (fn.length - 1 !== args.length) {
+      throw new Error(`Invalid number of arguments for function "${fn.name}"`);
+    }
     return new Promise((resolve, reject) => {
       fn(...args, (err: unknown, data: D) => {
         if (err != null) {
