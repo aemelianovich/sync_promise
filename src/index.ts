@@ -1,2 +1,9 @@
-export { default as isNumber } from './is_number/is_number';
-export { default as getStrIter } from './str_iter/get_str_iter';
+export {
+  sleep,
+  timeout,
+  setImmediateCustom,
+  clearImmediateCustom,
+  promisify,
+} from './helpers';
+
+export { default as SyncPromise } from './sync_promise/sync_promise';
